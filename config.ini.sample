@@ -1,0 +1,5 @@
+nick = yournick
+host = irc.esper.net
+port = 6697
+ssl = true
+channels = #atlas,#foo
