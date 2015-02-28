@@ -15,7 +15,7 @@ public class HelpModule implements Module {
 		for(Entry<String, Module> e : modMap.entrySet()) {
 			Module mod = e.getValue();
 			cmd = e.getKey();
-			out.notice(String.format("!%-8s - %s", cmd, mod.help(cmd)));
+			out.notice(String.format("  !%-8s - %s", cmd, mod.help(cmd)));
 		}
 	}
 
