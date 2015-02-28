@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import net.leaguecom.atlas.listener.CommandListener;
 import net.leaguecom.atlas.module.HelpModule;
+import net.leaguecom.atlas.module.Module;
 import net.leaguecom.atlas.module.ModuleManager;
 import net.leaguecom.atlas.module.OpModule;
 
@@ -51,6 +52,8 @@ public class Atlas {
 		ModuleManager cmdMan = ModuleManager.getInstance();
 
 		cmdMan.registerCommand("help", new HelpModule());
-		cmdMan.registerCommand("op", new OpModule());
+		Module opMod = new OpModule();
+		cmdMan.registerCommand("op", opMod);
+		cmdMan.registerCommand("deop", opMod);
 	}
 }

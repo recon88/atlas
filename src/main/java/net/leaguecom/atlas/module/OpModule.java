@@ -10,10 +10,16 @@ public class OpModule implements Module {
 	public void execute(String cmd, String txt, GenericMessageEvent<PircBotX> event) {
 		PircBotX bot = event.getBot();
 		User u = bot.getUserChannelDao().getUser(txt);
+		char modifier;
+		if(cmd.equals("op")) {
+			modifier = '+';
+		} else {
+			modifier = '-';
+		}
 		
 		OutputUser out = bot.getUserChannelDao().getUser("Chanserv").send();
 		for(Channel c : bot.getUserBot().getChannelsOpIn()) {
-			out.message(String.format("FLAGS %s %s +O", c.getName(), u.getNick()));
+			out.message(String.format("FLAGS %s %s %cO", c.getName(), u.getNick(), modifier));
 		}
 	}
 
