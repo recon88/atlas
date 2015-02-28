@@ -4,6 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import net.leaguecom.atlas.command.ModuleManager;
+import net.leaguecom.atlas.command.HelpModule;
+
 import org.pircbotx.Configuration;
 import org.pircbotx.Configuration.Builder;
 import org.pircbotx.PircBotX;
@@ -20,8 +23,8 @@ public class Atlas {
 				.setServer(config.getProperty("host"), Integer.parseInt(config.getProperty("port")));
 		
 		String[] channels = config.getProperty("channels").split(",");
-		for(int i = 0; i < channels.length; i++) {
-			builder.addAutoJoinChannel(channels[i]);
+		for(String channel : channels) {
+			builder.addAutoJoinChannel(channel);
 		}
 		
 		boolean useSSL = Boolean.parseBoolean(config.getProperty("ssl"));
@@ -29,8 +32,16 @@ public class Atlas {
 		if(useSSL) {
 			builder.setSocketFactory(new UtilSSLSocketFactory().trustAllCertificates());
 		}
+		
+		initCommands();
 
 		PircBotX bot = new PircBotX(builder.buildConfiguration());
 		bot.startBot();
+	}
+
+	private static void initCommands() {
+		ModuleManager cmdMan = ModuleManager.getInstance();
+		
+		cmdMan.registerCommand("help", new HelpModule());
 	}
 }
