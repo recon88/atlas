@@ -7,6 +7,7 @@ import java.util.Properties;
 import net.leaguecom.atlas.listener.CommandListener;
 import net.leaguecom.atlas.module.HelpModule;
 import net.leaguecom.atlas.module.ModuleManager;
+import net.leaguecom.atlas.module.OpModule;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.Configuration.Builder;
@@ -26,8 +27,12 @@ public class Atlas {
 				.addListener(new CommandListener());
 		
 		String[] channels = config.getProperty("channels").split(",");
-		for(String channel : channels) {
-			builder.addAutoJoinChannel(channel);
+		if(Boolean.parseBoolean(config.getProperty("debug"))) {
+			builder.addAutoJoinChannel(channels[0]);
+		} else {
+			for(String channel : channels) {
+				builder.addAutoJoinChannel(channel);
+			}
 		}
 		
 		boolean useSSL = Boolean.parseBoolean(config.getProperty("ssl"));
@@ -44,7 +49,8 @@ public class Atlas {
 
 	private static void initCommands() {
 		ModuleManager cmdMan = ModuleManager.getInstance();
-		
+
 		cmdMan.registerCommand("help", new HelpModule());
+		cmdMan.registerCommand("op", new OpModule());
 	}
 }
