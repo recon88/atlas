@@ -14,8 +14,10 @@ public class OpModule implements Module {
 		switch (cmd) {
 		case "op":
 			modifier = '+';
+			break;
 		case "deop":
 			modifier = '-';
+			break;
 		}
 
 		OutputUser out = bot.getUserChannelDao().getUser("Chanserv").send();
