@@ -1,4 +1,4 @@
-package net.leaguecom.atlas.command;
+package net.leaguecom.atlas.module;
 
 import java.util.HashMap;
 import java.util.Map;

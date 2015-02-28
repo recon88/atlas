@@ -1,4 +1,4 @@
-package net.leaguecom.atlas.command;
+package net.leaguecom.atlas.module;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.types.GenericMessageEvent;

@@ -1,6 +1,6 @@
 package net.leaguecom.atlas.listener;
 
-import net.leaguecom.atlas.command.ModuleManager;
+import net.leaguecom.atlas.module.ModuleManager;
 
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;

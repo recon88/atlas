@@ -4,9 +4,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import net.leaguecom.atlas.command.ModuleManager;
-import net.leaguecom.atlas.command.HelpModule;
 import net.leaguecom.atlas.listener.CommandListener;
+import net.leaguecom.atlas.module.HelpModule;
+import net.leaguecom.atlas.module.ModuleManager;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.Configuration.Builder;
