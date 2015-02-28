@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import net.leaguecom.atlas.command.ModuleManager;
 import net.leaguecom.atlas.command.HelpModule;
+import net.leaguecom.atlas.listener.CommandListener;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.Configuration.Builder;
@@ -20,7 +21,8 @@ public class Atlas {
 		
 		Builder<PircBotX> builder = new Configuration.Builder<PircBotX>()
 				.setName(config.getProperty("nick"))
-				.setServer(config.getProperty("host"), Integer.parseInt(config.getProperty("port")));
+				.setServer(config.getProperty("host"), Integer.parseInt(config.getProperty("port")))
+				.addListener(new CommandListener());
 		
 		String[] channels = config.getProperty("channels").split(",");
 		for(String channel : channels) {
