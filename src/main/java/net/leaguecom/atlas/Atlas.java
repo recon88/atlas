@@ -21,6 +21,7 @@ public class Atlas {
 		
 		Builder<PircBotX> builder = new Configuration.Builder<PircBotX>()
 				.setName(config.getProperty("nick"))
+				.setNickservPassword(config.getProperty("ident"))
 				.setServer(config.getProperty("host"), Integer.parseInt(config.getProperty("port")))
 				.addListener(new CommandListener());
 		

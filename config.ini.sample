@@ -1,4 +1,5 @@
 nick = yournick
+ident = yourpassword
 host = irc.esper.net
 port = 6697
 ssl = true
